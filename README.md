@@ -15,8 +15,8 @@ client.cer e server.cer são certicados do cliente e servidor, respectivamente.
 identity.jks e truststore.jks são arquivos com keys para certificados do cliente ou certificados do servidor
 
 
-Em uma comunicação Two Way TLS, o cliente e o servidor precisam trocar certificados,<br>
-então cada um precisa criar um certificado e enviar para o outro incluir no truststore.
+Em uma comunicação Two Way TLS, o cliente e o servidor precisam trocar certificados,
+então ambos devem criar um certificado e enviar para sua contra-parte que irá incluí-lo no truststore.
 
 ### Criar public/private key para o cliente
 
@@ -38,4 +38,19 @@ server.cer será obtido do servidor
 
 ```
 keytool -v -importcert -file ./server.cer -alias server -keystore ./truststore.jks -storepass secret -noprompt
+```
+
+## Testando
+
+Esse demo é uma aplicação spring-boot padrão. Tem uma 
+
+Ao executar a aplicação com 
+```
+mvn spring-boot:run
+```
+
+Veremos a mensagem:
+
+```
+Recebido do servidor: Hello, 1
 ```
